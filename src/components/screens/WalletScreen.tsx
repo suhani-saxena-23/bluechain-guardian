@@ -64,17 +64,24 @@ const WalletScreen: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="card-elevated p-5 mb-5 gradient-primary text-white"
+          className="card-elevated p-6 mb-5 gradient-primary text-white relative overflow-hidden"
         >
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-white/80 text-sm font-medium">Total Balance</span>
-            <button onClick={toggleBalanceVisibility} className="text-white/80 hover:text-white">
-              {wallet.showBalance ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
-            </button>
+          {/* Background decoration */}
+          <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+          <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-white/5 rounded-full blur-xl" />
+          
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-white/70 text-xs font-medium uppercase tracking-wide">Total Balance</span>
+              <button onClick={toggleBalanceVisibility} className="text-white/70 hover:text-white transition-colors p-1">
+                {wallet.showBalance ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+              </button>
+            </div>
+            <p className="text-4xl font-bold tracking-tight">
+              {wallet.showBalance ? `₹${totalBalance.toLocaleString('en-IN')}` : '₹••••••••'}
+            </p>
+            <p className="text-white/60 text-xs mt-2">Available for transactions</p>
           </div>
-          <p className="text-3xl font-bold">
-            {wallet.showBalance ? `₹${totalBalance.toLocaleString('en-IN')}` : '₹••••••••'}
-          </p>
         </motion.div>
 
         {/* Wallet Address */}
