@@ -112,34 +112,41 @@ const ValidatorScreen: React.FC = () => {
           </h2>
 
           <div className="space-y-3">
-            <SensorInput
-              icon={<Thermometer className="w-4 h-4" />}
-              label="Temperature"
-              unit="°C"
-              value={sensors.temperature}
-              onChange={updateSensor('temperature')}
-            />
-            <SensorInput
-              icon={<Droplets className="w-4 h-4" />}
-              label="Salinity"
-              unit="ppt"
-              value={sensors.salinity}
-              onChange={updateSensor('salinity')}
-            />
-            <SensorInput
-              icon={<FlaskConical className="w-4 h-4" />}
-              label="pH Level"
-              unit="pH"
-              value={sensors.ph}
-              onChange={updateSensor('ph')}
-            />
-            <SensorInput
-              icon={<Wind className="w-4 h-4" />}
-              label="Dissolved O₂"
-              unit="mg/L"
-              value={sensors.dissolvedO2}
-              onChange={updateSensor('dissolvedO2')}
-            />
+            {/* Row 1 */}
+            <div className="grid grid-cols-2 gap-3">
+              <SensorInput
+                icon={<Thermometer className="w-4 h-4" />}
+                label="Temperature"
+                unit="°C"
+                value={sensors.temperature}
+                onChange={updateSensor('temperature')}
+              />
+              <SensorInput
+                icon={<Droplets className="w-4 h-4" />}
+                label="Salinity"
+                unit="ppt"
+                value={sensors.salinity}
+                onChange={updateSensor('salinity')}
+              />
+            </div>
+            {/* Row 2 */}
+            <div className="grid grid-cols-2 gap-3">
+              <SensorInput
+                icon={<FlaskConical className="w-4 h-4" />}
+                label="pH Level"
+                unit="pH"
+                value={sensors.ph}
+                onChange={updateSensor('ph')}
+              />
+              <SensorInput
+                icon={<Wind className="w-4 h-4" />}
+                label="Dissolved O₂"
+                unit="mg/L"
+                value={sensors.dissolvedO2}
+                onChange={updateSensor('dissolvedO2')}
+              />
+            </div>
+            {/* Row 3 */}
             <SensorInput
               icon={<Waves className="w-4 h-4" />}
               label="Turbidity"

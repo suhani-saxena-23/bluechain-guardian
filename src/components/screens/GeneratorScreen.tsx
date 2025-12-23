@@ -45,19 +45,28 @@ const GeneratorScreen: React.FC = () => {
     setPhotos(prev => prev.filter((_, i) => i !== index));
   };
 
+  const [validationErrors, setValidationErrors] = useState<{ name?: string; hectares?: string; location?: string }>({});
+
   const handleSubmit = () => {
+    const errors: { name?: string; hectares?: string; location?: string } = {};
+    
     if (!projectName.trim()) {
-      showToast('error', 'Missing Field', 'Please enter a project name.');
-      return;
+      errors.name = 'Project name is required';
     }
     if (!hectares || parseFloat(hectares) <= 0) {
-      showToast('error', 'Missing Field', 'Please enter valid hectares restored.');
-      return;
+      errors.hectares = 'Valid hectares is required';
     }
     if (!location) {
-      showToast('error', 'Missing Field', 'Please select a project location.');
+      errors.location = 'Location is required';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      showToast('error', 'Missing Fields', 'Please fill all required fields.');
       return;
     }
+    
+    setValidationErrors({});
 
     const newProject: Project = {
       id: Date.now().toString(),
@@ -121,10 +130,16 @@ const GeneratorScreen: React.FC = () => {
               <input
                 type="text"
                 value={projectName}
-                onChange={(e) => setProjectName(e.target.value)}
+                onChange={(e) => {
+                  setProjectName(e.target.value);
+                  if (validationErrors.name) setValidationErrors(prev => ({ ...prev, name: undefined }));
+                }}
                 placeholder="e.g., Sundarbans Mangrove Restoration"
-                className="input-field"
+                className={`input-field ${validationErrors.name ? 'border-destructive ring-1 ring-destructive' : ''}`}
               />
+              {validationErrors.name && (
+                <p className="text-xs text-destructive mt-1">{validationErrors.name}</p>
+              )}
             </div>
 
             {/* Hectares */}
@@ -135,10 +150,16 @@ const GeneratorScreen: React.FC = () => {
               <input
                 type="number"
                 value={hectares}
-                onChange={(e) => setHectares(e.target.value)}
+                onChange={(e) => {
+                  setHectares(e.target.value);
+                  if (validationErrors.hectares) setValidationErrors(prev => ({ ...prev, hectares: undefined }));
+                }}
                 placeholder="e.g., 150"
-                className="input-field"
+                className={`input-field ${validationErrors.hectares ? 'border-destructive ring-1 ring-destructive' : ''}`}
               />
+              {validationErrors.hectares && (
+                <p className="text-xs text-destructive mt-1">{validationErrors.hectares}</p>
+              )}
             </div>
 
             {/* Location */}
@@ -159,7 +180,10 @@ const GeneratorScreen: React.FC = () => {
                     </div>
                   </div>
                   <button
-                    onClick={() => setIsMapOpen(true)}
+                    onClick={() => {
+                      setIsMapOpen(true);
+                      if (validationErrors.location) setValidationErrors(prev => ({ ...prev, location: undefined }));
+                    }}
                     className="btn-secondary flex items-center justify-center gap-2"
                   >
                     <Edit3 className="w-4 h-4" />
@@ -167,13 +191,21 @@ const GeneratorScreen: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <button
-                  onClick={() => setIsMapOpen(true)}
-                  className="btn-secondary flex items-center justify-center gap-2"
-                >
-                  <MapPin className="w-4 h-4" />
-                  <span>Select Location</span>
-                </button>
+                <div>
+                  <button
+                    onClick={() => {
+                      setIsMapOpen(true);
+                      if (validationErrors.location) setValidationErrors(prev => ({ ...prev, location: undefined }));
+                    }}
+                    className={`btn-secondary flex items-center justify-center gap-2 ${validationErrors.location ? 'border-destructive' : ''}`}
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>Select Location</span>
+                  </button>
+                  {validationErrors.location && (
+                    <p className="text-xs text-destructive mt-1">{validationErrors.location}</p>
+                  )}
+                </div>
               )}
             </div>
 
