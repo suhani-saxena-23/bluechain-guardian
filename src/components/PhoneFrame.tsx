@@ -6,9 +6,9 @@ interface PhoneFrameProps {
 
 const PhoneFrame: React.FC<PhoneFrameProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       {/* iPhone 15 Frame */}
-      <div className="relative w-[390px] h-[844px] rounded-[55px] phone-bezel p-3 shadow-phone">
+      <div className="relative w-[390px] h-[844px] rounded-[55px] p-3 shadow-phone" style={{ background: 'linear-gradient(135deg, #000000 0%, #6d3d84 100%)' }}>
         {/* Inner bezel highlight */}
         <div className="absolute inset-0 rounded-[55px] ring-1 ring-white/10" />
         
