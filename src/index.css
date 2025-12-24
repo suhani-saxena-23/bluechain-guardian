@@ -6,69 +6,69 @@
 
 @layer base {
   :root {
-    /* Ocean-inspired teal palette */
-    --background: 0 0% 100%;
-    --foreground: 210 20% 15%;
+    /* Purple theme palette */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 20% 15%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 15%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Primary Teal */
-    --primary: 175 82% 35%;
+    /* Primary Purple #6d3d84 */
+    --primary: 280 38% 38%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 175 75% 92%;
-    --primary-gradient-start: 175 82% 35%;
-    --primary-gradient-end: 190 80% 40%;
+    --primary-light: 280 38% 20%;
+    --primary-gradient-start: 280 38% 38%;
+    --primary-gradient-end: 280 45% 50%;
 
-    /* Secondary Aqua */
-    --secondary: 185 60% 95%;
-    --secondary-foreground: 175 82% 30%;
+    /* Secondary Dark */
+    --secondary: 280 25% 15%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Muted Ocean */
-    --muted: 200 20% 96%;
-    --muted-foreground: 210 15% 50%;
+    /* Muted Dark */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    /* Accent Turquoise */
-    --accent: 180 70% 45%;
+    /* Accent Purple Light */
+    --accent: 280 45% 50%;
     --accent-foreground: 0 0% 100%;
 
     /* Status Colors */
     --success: 150 70% 40%;
     --success-foreground: 0 0% 100%;
-    --success-light: 150 60% 92%;
+    --success-light: 150 40% 20%;
 
     --warning: 45 90% 55%;
-    --warning-foreground: 30 80% 20%;
-    --warning-light: 45 90% 92%;
+    --warning-foreground: 0 0% 0%;
+    --warning-light: 45 50% 25%;
 
     --info: 200 80% 50%;
     --info-foreground: 0 0% 100%;
-    --info-light: 200 70% 92%;
+    --info-light: 200 50% 20%;
 
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 20% 90%;
-    --input: 200 20% 92%;
-    --ring: 175 82% 35%;
+    --border: 0 0% 20%;
+    --input: 0 0% 12%;
+    --ring: 280 38% 38%;
 
     --radius: 1rem;
 
     /* Web3 / Wallet specific */
-    --wallet-bg: 210 25% 98%;
-    --wallet-card: 0 0% 100%;
+    --wallet-bg: 0 0% 5%;
+    --wallet-card: 0 0% 10%;
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(210 20% 15% / 0.05);
-    --shadow-md: 0 4px 12px -2px hsl(210 20% 15% / 0.08);
-    --shadow-lg: 0 10px 25px -5px hsl(210 20% 15% / 0.1);
-    --shadow-glow: 0 0 30px hsl(175 82% 35% / 0.2);
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 12px -2px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 10px 25px -5px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(280 38% 38% / 0.3);
 
     /* Phone frame */
-    --phone-shadow: 0 25px 80px -20px hsl(210 20% 5% / 0.5);
+    --phone-shadow: 0 25px 80px -20px hsl(280 38% 20% / 0.5);
   }
 
   .dark {
@@ -111,15 +111,15 @@
   }
 
   .gradient-ocean {
-    background: linear-gradient(180deg, hsl(175 82% 35%) 0%, hsl(190 80% 40%) 100%);
+    background: linear-gradient(180deg, hsl(280 38% 38%) 0%, hsl(280 45% 50%) 100%);
   }
 
   .gradient-header {
-    background: linear-gradient(135deg, hsl(175 82% 38%) 0%, hsl(185 75% 42%) 100%);
+    background: linear-gradient(135deg, hsl(280 38% 38%) 0%, hsl(280 45% 45%) 100%);
   }
 
   .text-gradient-ocean {
-    background: linear-gradient(135deg, hsl(175 82% 35%) 0%, hsl(190 80% 40%) 100%);
+    background: linear-gradient(135deg, hsl(280 38% 38%) 0%, hsl(280 45% 50%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -206,10 +206,10 @@
 
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px hsl(175 82% 35% / 0.3);
+      box-shadow: 0 0 20px hsl(280 38% 38% / 0.3);
     }
     50% {
-      box-shadow: 0 0 30px hsl(175 82% 35% / 0.5);
+      box-shadow: 0 0 30px hsl(280 38% 38% / 0.5);
     }
   }
 
