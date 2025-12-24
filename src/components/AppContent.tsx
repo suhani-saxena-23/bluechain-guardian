@@ -6,6 +6,8 @@ import GeneratorScreen from './screens/GeneratorScreen';
 import ValidatorScreen from './screens/ValidatorScreen';
 import ConsumerScreen from './screens/ConsumerScreen';
 import WalletScreen from './screens/WalletScreen';
+import SignInScreen from './screens/SignInScreen';
+import LoginScreen from './screens/LoginScreen';
 import BottomNavigation from './BottomNavigation';
 import Toast from './Toast';
 
@@ -15,11 +17,16 @@ const screens = {
   validator: ValidatorScreen,
   consumer: ConsumerScreen,
   wallet: WalletScreen,
+  signin: SignInScreen,
+  login: LoginScreen,
 };
 
 const AppContent: React.FC = () => {
   const { activeTab } = useApp();
   const Screen = screens[activeTab];
+
+  // Hide bottom navigation on signin/login screens
+  const showBottomNav = activeTab !== 'signin' && activeTab !== 'login';
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -38,7 +45,7 @@ const AppContent: React.FC = () => {
         </motion.div>
       </AnimatePresence>
 
-      <BottomNavigation />
+      {showBottomNav && <BottomNavigation />}
     </div>
   );
 };

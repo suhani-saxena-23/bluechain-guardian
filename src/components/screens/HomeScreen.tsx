@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Leaf, Shield, ShoppingCart, Wallet, Waves } from 'lucide-react';
+import { Leaf, Shield, ShoppingCart, Wallet, Waves, LogIn, UserPlus } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import type { TabType } from '@/types';
 
@@ -82,7 +82,7 @@ const HomeScreen: React.FC = () => {
       </div>
 
       {/* Role selection cards */}
-      <div className="flex-1 px-5 -mt-8 overflow-y-auto pb-28 scrollbar-hide">
+      <div className="flex-1 px-5 -mt-8 overflow-y-auto pb-44 scrollbar-hide">
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -119,16 +119,40 @@ const HomeScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Connect Wallet CTA */}
+      {/* Bottom Action Buttons */}
       <div className="absolute bottom-20 left-0 right-0 px-5 pb-4 bg-gradient-to-t from-background via-background to-transparent pt-10">
+        {/* Sign In & Login Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="flex gap-3 mb-3"
+        >
+          <button
+            onClick={() => setActiveTab('signin')}
+            className="flex-1 py-3 px-4 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/25 active:scale-[0.98] transition-transform"
+          >
+            <UserPlus className="w-4 h-4" />
+            Sign In
+          </button>
+          <button
+            onClick={() => setActiveTab('login')}
+            className="flex-1 py-3 px-4 rounded-xl bg-card border border-border text-foreground font-semibold text-sm flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-transform"
+          >
+            <LogIn className="w-4 h-4" />
+            Login
+          </button>
+        </motion.div>
+
+        {/* Connect Wallet Button */}
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.5 }}
           onClick={handleWalletClick}
-          className="btn-primary flex items-center justify-center gap-3 shadow-lg shadow-primary/25"
+          className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 text-primary font-semibold text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
         >
-          <Wallet className="w-5 h-5" />
+          <Wallet className="w-4 h-4" />
           <span>{wallet.isConnected ? 'View Wallet' : 'Connect Wallet'}</span>
         </motion.button>
       </div>

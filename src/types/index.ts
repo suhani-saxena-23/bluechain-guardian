@@ -1,6 +1,13 @@
 export type UserRole = 'generator' | 'validator' | 'consumer';
 
-export type TabType = 'home' | 'generator' | 'validator' | 'consumer' | 'wallet';
+export type TabType = 'home' | 'generator' | 'validator' | 'consumer' | 'wallet' | 'signin' | 'login';
+
+export interface UserAuth {
+  role: UserRole;
+  name: string;
+  email?: string;
+  isLoggedIn: boolean;
+}
 
 export interface Project {
   id: string;
